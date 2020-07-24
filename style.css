@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#game {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (auto)[20];
+      grid-template-columns: repeat(20, auto);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#game button {
+  width: 40px;
+  height: 40px;
+}
+
+#game .opened-button {
+  background-color: white;
+  border: none;
+}
+
+#game .mine-shown img {
+  width: 100%;
+}
+
+#game .mine-blown {
+  background-color: brown;
+}
+/*# sourceMappingURL=style.css.map */

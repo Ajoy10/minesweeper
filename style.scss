@@ -1,0 +1,35 @@
+*{
+    margin:0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+}
+
+#game{
+    display: grid;
+    grid-template-columns: repeat(20,auto);
+    justify-content: center;
+    button{
+        width: 40px;
+        height: 40px;
+        
+    }
+
+    .opened-button{
+        background-color: white;
+        border: none;
+    }
+
+    .mine-shown{
+        img{
+            width: 100%;
+        }
+    }
+
+    .mine-blown{
+        background-color: brown;
+    }
+}
