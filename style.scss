@@ -1,25 +1,42 @@
+$bgColor : #03051e;
+$textColor : #978d58;
+
 *{
     margin:0;
     padding: 0;
+    
+    
 }
 
 body{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;   
+    color: $textColor;
+    background-color: $bgColor;
+    font-size: 14px;
 }
 
 #game{
     display: grid;
-    grid-template-columns: repeat(20,auto);
+    
     justify-content: center;
     button{
-        width: 40px;
-        height: 40px;
-        
+        width: 6vw;
+        height: 6vw;
+        background-color: $textColor ;
+        color: white;
+        border-radius: 3px;
+        margin: 2px;
+        transition: margin .05s ease-in-out;
+        &:hover{
+            margin: 0px;
+            
+        }
     }
 
     .opened-button{
-        background-color: white;
+        background-color: $bgColor;
         border: none;
     }
 
@@ -31,5 +48,40 @@ body{
 
     .mine-blown{
         background-color: red;
+    }
+}
+button{
+    width: 20vw;
+    height: 10vh;
+    border: none;
+    border-radius: 10px;
+    box-shadow: none;
+}
+
+#setup{
+    display: flex;
+    margin: 30vh 0;
+    flex-direction: column;
+    h3{
+        flex: 1fr;
+        align-self: center;
+        margin: 10vh 10vw;
+        font-size: 2rem;
+    }
+    
+}
+
+#restart-menu{
+    button{
+        margin: 10vh 10vw;
+    }
+}
+
+@media screen and (min-width:500px){
+    #game{
+        button{
+            width: 30px;
+            height: 30px;
+        }
     }
 }
