@@ -4,29 +4,18 @@
 }
 
 body {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
   color: #978d58;
   background-color: #03051e;
   font-size: 14px;
 }
 
 #game {
-  display: -ms-grid;
   display: grid;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
-
 #game button {
   width: 6vw;
   height: 6vw;
@@ -34,25 +23,35 @@ body {
   color: white;
   border-radius: 3px;
   margin: 2px;
-  -webkit-transition: margin .05s ease-in-out;
-  transition: margin .05s ease-in-out;
+  transition: margin 0.05s ease-in-out;
 }
-
 #game button:hover {
   margin: 0px;
 }
-
 #game .opened-button {
   background-color: #03051e;
   border: none;
 }
-
 #game .mine-shown img {
   width: 100%;
 }
-
 #game .mine-blown {
   background-color: red;
+}
+#game .flagged {
+  background-color: rgb(253, 225, 116);
+}
+#game .flagged::after {
+  content: "";
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: url("./images/flag-solid.svg");
+  background-size: 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 100;
 }
 
 button {
@@ -60,28 +59,17 @@ button {
   height: 10vh;
   border: none;
   border-radius: 10px;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 
 #setup {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   margin: 30vh 0;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
-
 #setup h3 {
-  -webkit-box-flex: 1fr;
-      -ms-flex: 1fr;
-          flex: 1fr;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
+  flex: 1fr;
+  align-self: center;
   margin: 10vh 10vw;
   font-size: 2rem;
 }
@@ -95,5 +83,4 @@ button {
     width: 30px;
     height: 30px;
   }
-}
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */

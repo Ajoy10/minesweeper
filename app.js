@@ -129,7 +129,7 @@ function Game(dif) {
   }
 
   // Debug line
-  console.table(cells.map((row) => row.map((cell) => cell.content)));
+  // console.table(cells.map((row) => row.map((cell) => cell.content)));
 
   // Helper function to check whether given cell have mine or not
   const CheckMineOnCell = (a, b) => {
@@ -162,17 +162,36 @@ function Game(dif) {
       for (let l = -1; l < 2; l++) {
         if (k == 0 && l == 0) continue;
 
-        Open(i + k, j + l);
+        Open(i + k, j + l, true);
       }
     }
   };
 
+  function Flag(i, j) {
+    if (cells[i] != undefined && cells[i][j] != undefined) {
+      // if the cell is opened just return
+      if (cells[i][j].action == "open") return;
+
+      // if the cell is a flag, set it to not flag
+      if (cells[i][j].action == "flag") {
+        cells[i][j].action = "closed";
+        cellsButton[i][j].classList.remove("flagged");
+      } else {
+        // Otherwise,
+        cells[i][j].action = "flag"; // Set action to flag
+        cellsButton[i][j].classList.add("flagged"); // Add flagged class to the cell button
+      }
+    }
+  }
+
   // Function to open the given cell
-  function Open(i, j) {
+  function Open(i, j, autoOpened = false) {
     // If the given cell is a valid cell
     if (cells[i] != undefined && cells[i][j] != undefined) {
       // if the cell is already opened just return
       if (cells[i][j].action == "open") return;
+
+      if (cells[i][j].action == "flag" && !autoOpened) return; // If it is not auto opened (i.e Player clicked on it) don't open
 
       // if the cell is a mine, game over
       if (cells[i][j].content == "mine") {
@@ -183,6 +202,7 @@ function Game(dif) {
         cells[i][j].action = "open"; // Set action to open
         openedCells++; // Increment the count of total open cells
         cellsButton[i][j].innerHTML = cells[i][j].content; // Reveal the content of the cell
+        cellsButton[i][j].classList.remove("flagged");
         cellsButton[i][j].classList.add("opened-button"); // Add opened-button class to the cell button
 
         // Check whether the neighbour cells are mines or not,
@@ -196,15 +216,20 @@ function Game(dif) {
       }
     }
     // Debug line
-    console.table(cells.map((row) => row.map((cell) => cell.content)));
+    // console.table(cells.map((row) => row.map((cell) => cell.action)));
   }
 
   const DrawCell = (x, y) => {
     // Creates a new button add a event listener for click event and return the button
     var btn = document.createElement("button");
     btn.id = `block${x}-${y}`;
-    btn.addEventListener("click", function () {
-      if (!gameOver) Open(x, y);
+    btn.addEventListener("click", () => {
+      if (!gameOver) Open(x, y, false);
+    });
+
+    btn.addEventListener("contextmenu", (e) => {
+      e.preventDefault();
+      if (!gameOver) Flag(x, y);
     });
     return btn;
   };
@@ -228,6 +253,7 @@ function Game(dif) {
     // Revealing mines
     minesButton.forEach((mine) => {
       mine.classList.add("mine-shown");
+      mine.classList.remove("flagged"); // Removing flags from mines
       let img = document.createElement("img");
       img.src = mineImage.src;
       mine.appendChild(img);

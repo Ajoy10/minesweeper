@@ -1,27 +1,28 @@
 $bgColor : #03051e;
 $textColor : #978d58;
 
-*{
-    margin:0;
+* {
+    margin: 0;
     padding: 0;
-    
-    
+
+
 }
 
-body{
+body {
     display: flex;
     flex-direction: column;
-    align-items: center;   
+    align-items: center;
     color: $textColor;
     background-color: $bgColor;
     font-size: 14px;
 }
 
-#game{
+#game {
     display: grid;
-    
+
     justify-content: center;
-    button{
+
+    button {
         width: 6vw;
         height: 6vw;
         background-color: $textColor ;
@@ -29,28 +30,48 @@ body{
         border-radius: 3px;
         margin: 2px;
         transition: margin .05s ease-in-out;
-        &:hover{
+
+        &:hover {
             margin: 0px;
-            
+
         }
     }
 
-    .opened-button{
+    .opened-button {
         background-color: $bgColor;
         border: none;
     }
 
-    .mine-shown{
-        img{
+    .mine-shown {
+        img {
             width: 100%;
         }
     }
 
-    .mine-blown{
+    .mine-blown {
         background-color: red;
     }
+
+    .flagged {
+        background-color: rgb(253, 225, 116);
+
+        &::after {
+
+            content: "";
+            display: flex;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: url("./images/flag-solid.svg");
+            background-size: 60%;
+            background-repeat: no-repeat;
+            background-position: center;
+            z-index: 100;
+        }
+    }
 }
-button{
+
+button {
     width: 20vw;
     height: 10vh;
     border: none;
@@ -58,28 +79,29 @@ button{
     box-shadow: none;
 }
 
-#setup{
+#setup {
     display: flex;
     margin: 30vh 0;
     flex-direction: column;
-    h3{
+
+    h3 {
         flex: 1fr;
         align-self: center;
         margin: 10vh 10vw;
         font-size: 2rem;
     }
-    
+
 }
 
-#restart-menu{
-    button{
+#restart-menu {
+    button {
         margin: 10vh 10vw;
     }
 }
 
-@media screen and (min-width:500px){
-    #game{
-        button{
+@media screen and (min-width:500px) {
+    #game {
+        button {
             width: 30px;
             height: 30px;
         }
