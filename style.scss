@@ -17,10 +17,12 @@ body {
     font-size: 14px;
 }
 
-#game {
+#grid-screen {
     display: grid;
 
     justify-content: center;
+
+    padding-top: 40px;
 
     button {
         width: 6vw;
@@ -53,7 +55,7 @@ body {
     }
 
     .flagged {
-        background-color: rgb(253, 225, 116);
+        background-color: rgb(110, 139, 207);
 
         &::after {
 
@@ -100,7 +102,7 @@ button {
 }
 
 @media screen and (min-width:500px) {
-    #game {
+    #grid-screen {
         button {
             width: 30px;
             height: 30px;

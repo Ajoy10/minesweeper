@@ -12,11 +12,12 @@ body {
   font-size: 14px;
 }
 
-#game {
+#grid-screen {
   display: grid;
   justify-content: center;
+  padding-top: 40px;
 }
-#game button {
+#grid-screen button {
   width: 6vw;
   height: 6vw;
   background-color: #978d58;
@@ -25,23 +26,23 @@ body {
   margin: 2px;
   transition: margin 0.05s ease-in-out;
 }
-#game button:hover {
+#grid-screen button:hover {
   margin: 0px;
 }
-#game .opened-button {
+#grid-screen .opened-button {
   background-color: #03051e;
   border: none;
 }
-#game .mine-shown img {
+#grid-screen .mine-shown img {
   width: 100%;
 }
-#game .mine-blown {
+#grid-screen .mine-blown {
   background-color: red;
 }
-#game .flagged {
-  background-color: rgb(253, 225, 116);
+#grid-screen .flagged {
+  background-color: rgb(110, 139, 207);
 }
-#game .flagged::after {
+#grid-screen .flagged::after {
   content: "";
   display: flex;
   position: relative;
@@ -79,7 +80,7 @@ button {
 }
 
 @media screen and (min-width: 500px) {
-  #game button {
+  #grid-screen button {
     width: 30px;
     height: 30px;
   }

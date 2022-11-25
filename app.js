@@ -26,7 +26,7 @@ const restartScreen = document.getElementById("restart-menu");
 restartScreen.style.display = "none"; // hiding the restart menu when the game begins
 
 // Game Screen
-const gameScreen = document.getElementById("game");
+const gridScreen = document.getElementById("grid-screen");
 
 function Game(dif) {
   let rows,
@@ -59,7 +59,7 @@ function Game(dif) {
   }
 
   // Updating CSS grid
-  gameScreen.style.gridTemplateColumns = `repeat(${cols},auto)`;
+  gridScreen.style.gridTemplateColumns = `repeat(${cols},auto)`;
 
   // Initializing cell arrays
   let cells = Array(rows);
@@ -240,7 +240,7 @@ function Game(dif) {
       let cellButton = DrawCell(i, j, cells[i][j]);
       cellsButton[i][j] = cellButton;
       if (cells[i][j].content == "mine") minesButton.push(cellButton); // if the current cell is a mine add it to mines buttons
-      gameScreen.appendChild(cellButton); // Display it to gameScreen
+      gridScreen.appendChild(cellButton); // Display it to gameScreen
     }
   }
 
